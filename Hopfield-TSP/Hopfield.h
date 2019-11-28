@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <random>
+#include <ctime>
 using namespace std;
 
-#define N 30
+#define N 10
 #define U0 0.02
 #define A 1.5
 #define D 0.5
@@ -22,11 +24,25 @@ public:
 	Hopfield();
 	void Input();
 	void Init();
+	void RandomInput();
 
 	int num_citys;
 
+	default_random_engine rnd_e;
+
 	Point p[N];
 	double w[N][N];
-	double 
+	double U[N][N];
+	double V[N][N];
+
+	int V_d[N][N];
+
+	int path[N];
+
+	void InitU();
+	void UpdateV();
+	void UpdateU();
+	void OutPutV();
+	void test();
 };
 
